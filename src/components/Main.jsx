@@ -50,6 +50,7 @@ export const Main = () => {
           backgroundRepeat: "no-repeat",
           opacity: 0.2,
           zIndex: 1,
+         
         }
       }}
     >
@@ -59,8 +60,9 @@ export const Main = () => {
           width: { xs: "100%", md: "50%" },
           padding: { xs: 2, md: 4 },
           zIndex: 10,
-          marginLeft: { xs: 0, md: "70px" },
+          marginLeft: { xs: 0, md: "80px" },
           position: "relative",
+         
         }}
       >
         <Typography
@@ -129,26 +131,28 @@ export const Main = () => {
       {/* Image Container - Visible only on medium+ screens */}
       <Box 
         sx={{ 
-          display: { xs: "none", md: "block" },
-          width: "50%",
-          position: "relative",
-          overflow: "hidden",
+        
+          width: "40%",
+         position:"relative",
+        
+        
         }}
       >
         <Box
           component="img"
           src="image.png"
           sx={{
-            width: "auto",
-            height: "100%",
-            maxWidth: "100%",
+            width: "200%",
+            height: "90%",
+           ml: "100px",
             position: "absolute",
-            top: "-5rem",
-            left: "5rem",
+            top: -100,
+            left: -200,
             transform: "rotate(3deg)",
             objectFit: "contain",
+            
           }}
-          alt="Decorative background"
+        
         />
       </Box>
     </Box>
@@ -162,7 +166,7 @@ export const Main = () => {
             backgroundColor: "#F3F7FB",
             borderTopRightRadius: 10,
             mr: { md: 20 }, // Only add margin on medium+ screens
-            padding: 2,
+            padding: 5,
         }}
     >
         {/* Left side with "Recent work" and button */}
@@ -188,7 +192,7 @@ export const Main = () => {
                 }}
             >
                 Recent
-               <br/>
+                <br />
                 work
             </Typography>
 
@@ -1450,7 +1454,7 @@ export const Main = () => {
               right: 50,
               top: 100,
               width: '40rem',
-              height: '30rem',
+              height: '27rem',
             }}
           >
             <defs>

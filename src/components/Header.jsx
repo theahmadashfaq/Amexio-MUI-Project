@@ -3,17 +3,16 @@ import {
   AppBar,
   Toolbar,
   Box,
-  Link,
   Typography,
   IconButton,
   Drawer,
   List,
-  ListItem,
-  Divider,
+  ListItem
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,6 +20,14 @@ export const Header = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const navLinks = [
+    { name: "Services", path: "/services" },
+    { name: "Insights", path: "/insights" },
+    { name: "Work", path: "/work" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" }
+  ];
 
   return (
     <>
@@ -34,75 +41,74 @@ export const Header = () => {
         }}
       >
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <Box
-              sx={{
-                width: "2rem",
-                height: "2rem",
-                borderRadius: "50%",
-                backgroundColor: "#f36e0a",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{ color: "white", fontWeight: "bold" }}
+          <RouterLink to="/" style={{ textDecoration: 'none' }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <Box
+                sx={{
+                  width: "2rem",
+                  height: "2rem",
+                  borderRadius: "50%",
+                  backgroundColor: "#f36e0a",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                <CheckCircleIcon
-                  sx={{
-                    width: "1rem",
-                    height: "1rem",
-                    marginLeft: "-0.25rem",
-                    color: "lightgray",
-                  }}
-                />
+                <Typography
+                  variant="body1"
+                  sx={{ color: "white", fontWeight: "bold" }}
+                >
+                  <CheckCircleIcon
+                    sx={{
+                      width: "1rem",
+                      height: "1rem",
+                      marginLeft: "-0.25rem",
+                      color: "lightgray",
+                    }}
+                  />
+                </Typography>
+              </Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "1.25rem",
+                  letterSpacing: "0.2em",
+                  color: "white",
+                }}
+              >
+                AMEXIO
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontStyle: "italic",
+                  fontWeight: "600",
+                  fontSize: "1.25rem",
+                  color: "#f36e0a",
+                }}
+              >
+                fuse
               </Typography>
             </Box>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "bold",
-                fontSize: "1.25rem",
-                letterSpacing: "0.2em",
-                color: "white",
-              }}
-            >
-              AMEXIO
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontStyle: "italic",
-                fontWeight: "600",
-                fontSize: "1.25rem",
-                color: "#f36e0a",
-              }}
-            >
-              fuse
-            </Typography>
-          </Box>
+          </RouterLink>
 
           {/* Desktop Navigation */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: "2.5rem" }}>
-            {["Services", "Insights", "Work", "About", "Contact"].map(
-              (item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  sx={{
-                    color: "white",
-                    textDecoration: "none",
-                    "&:hover": { textDecoration: "underline" },
-                    fontFamily: "'Roboto Slab', serif",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {item}
-                </Link>
-              )
-            )}
+            {navLinks.map((item) => (
+              <RouterLink
+                key={item.name}
+                to={item.path}
+                style={{
+                  color: "white",
+                  textDecoration: "none",
+                  fontFamily: "'Roboto Slab', serif",
+                  fontWeight: "bold",
+                }}
+              >
+                {item.name}
+              </RouterLink>
+            ))}
           </Box>
 
           {/* Mobile Menu Button */}
@@ -200,9 +206,9 @@ export const Header = () => {
         </Box>
 
         <List sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          {["Services", "Insights", "Work", "About", "Contact"].map((item) => (
+          {navLinks.map((item) => (
             <ListItem
-              key={item}
+              key={item.name}
               disablePadding
               onClick={handleDrawerToggle}
               sx={{
@@ -212,9 +218,9 @@ export const Header = () => {
                 },
               }}
             >
-              <Link
-                href="#"
-                sx={{
+              <RouterLink
+                to={item.path}
+                style={{
                   width: "100%",
                   padding: "0.75rem 1rem",
                   textDecoration: "none",
@@ -225,8 +231,8 @@ export const Header = () => {
                   textAlign: "right",
                 }}
               >
-                {item}
-              </Link>
+                {item.name}
+              </RouterLink>
             </ListItem>
           ))}
         </List>
