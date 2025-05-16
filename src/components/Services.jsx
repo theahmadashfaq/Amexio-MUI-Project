@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Divider, Tabs, Tab, Button, Container, Link, Grid } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 export const Services = () => {
@@ -15,15 +16,26 @@ export const Services = () => {
     <Box sx={{ backgroundColor: "#04273F" }}>
 
     
-    <Box sx={{ backgroundColor: "#04273F", width: "100%", minHeight: "100vh", position: "relative", overflow: "hidden" }}>
-      {/* Navigation breadcrumb */}
-      <Box sx={{ padding: "1.5rem 2rem" }}>
-        <Typography sx={{ color: "white", fontSize: "1rem", ml:15 }}>
-          <Box component="span" sx={{ cursor: "pointer" }}>Home</Box>
+    <Box sx={{ padding: "1.5rem 2rem", backgroundColor: "#04273F" }}>
+        <Typography sx={{ color: "white", fontSize: "1rem", ml: 15 }}>
+          <Box 
+            component={RouterLink} 
+            to="/"
+            sx={{ 
+              cursor: "pointer", 
+              color: "white", 
+              textDecoration: "none",
+              "&:hover": {
+                textDecoration: "underline"
+              }
+            }}
+          >
+            Home
+          </Box>
           <Box component="span" sx={{ margin: "0 0.5rem" }}> &gt; </Box>
           <Box component="span">Services</Box>
         </Typography>
-      </Box>
+      
       
       {/* Main content */}
       <Box sx={{ display: "flex", flexDirection: "column", position: "relative", padding: "0 2rem" }}>
