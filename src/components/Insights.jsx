@@ -69,7 +69,7 @@ export const Insights = () => {
       lineHeight: 1.5, 
       color: "#D9D9D9", 
       marginBottom: "2rem",
-      maxWidth: { xs: "75%", md: "90%" }, // Full width on xs
+      maxWidth: { xs: "100%", md: "90%" }, // Full width on xs
     }}>
       Our teams are  <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>passionate</Box> about solving challenges for our clients. Check out our posts to see how we approach problems, share our solutions, and offer practical insights from our work.
     </Typography>

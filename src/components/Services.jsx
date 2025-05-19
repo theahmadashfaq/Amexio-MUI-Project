@@ -1057,8 +1057,8 @@ const scrollRef = useRef(null);
       display: { xs: 'flex', md: 'none' },
       color: 'white',
       cursor: 'pointer',
-    }} onClick={() => scrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}>
-      <ArrowBackIosIcon />
+    }}>
+    
     </Box>
     <Typography variant="h1" sx={{
       fontSize: '2rem',
@@ -1072,8 +1072,8 @@ const scrollRef = useRef(null);
       display: { xs: 'flex', md: 'none' },
       color: 'white',
       cursor: 'pointer',
-    }} onClick={() => scrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}>
-      <ArrowForwardIosIcon />
+    }}>
+      
     </Box>
   </Box>
 
