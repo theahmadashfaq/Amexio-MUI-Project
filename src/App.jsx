@@ -5,6 +5,8 @@ import { Insights } from './components/Insights';
 import { Main } from './components/Main';
 import { Services } from './components/Services';
 import { Work } from './components/Work';
+import { About } from './components/About';
+import { Contact } from './components/Contact';
 
 
 function App() {
@@ -16,7 +18,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/work" element={<Work />} />
-       
+       <Route path="/about" element={<About/>} />
+       <Route path="/contact" element={<Contact/>} />
       </Routes>
     </Router>
   );

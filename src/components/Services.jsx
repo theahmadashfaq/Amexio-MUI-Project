@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Box, Typography, Divider, Tabs, Tab, Button, Container, Link, Grid } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link as RouterLink } from 'react-router-dom';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 export const Services = () => {
      const [activeTab, setActiveTab] = useState('consultancy');
-
+const scrollRef = useRef(null);
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
@@ -16,82 +18,117 @@ export const Services = () => {
     <Box sx={{ backgroundColor: "#04273F" }}>
 
     
-    <Box sx={{ padding: "1.5rem 2rem", backgroundColor: "#04273F" }}>
-        <Typography sx={{ color: "white", fontSize: "1rem", ml: 15 }}>
-          <Box 
-            component={RouterLink} 
-            to="/"
-            sx={{ 
-              cursor: "pointer", 
-              color: "white", 
-              textDecoration: "none",
-              "&:hover": {
-                textDecoration: "underline"
-              }
-            }}
-          >
-            Home
-          </Box>
-          <Box component="span" sx={{ margin: "0 0.5rem" }}> &gt; </Box>
-          <Box component="span">Services</Box>
-        </Typography>
-      
-      
-      {/* Main content */}
-      <Box sx={{ display: "flex", flexDirection: "column", position: "relative", padding: "0 2rem" }}>
-        {/* Text content */}
-        <Box sx={{ 
-            width: { xs: "100%", md: "60%", }, 
-            zIndex: 2, 
-            position: "relative",
-            marginLeft: { xs: 0, md: "7rem" }
-        }}>
-          <Typography sx={{ 
-              fontSize: { xs: "3rem", md: "4.5rem" }, 
-              fontWeight: "500", 
-              color: "white", 
-              marginBottom: "1.5rem",
-              fontFamily: "'Serif', serif"
-          }}>
-            Services
-          </Typography>
-          
-          <Typography sx={{ 
-            fontSize: { xs: "1.1rem", md: "2rem" }, 
-            lineHeight: 1.5, 
-            color: "#D9D9D9", 
-            marginBottom: "2rem",
-            maxWidth: "90%"
-          }}>
-            Optimizing your Customer Experience Management (CXM) operations is key to provide great customer experiences. We offer a range of services to help you go beyond just implementing a Content Management System (CMS) and achieve real <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>business results.</Box>
-          </Typography>
-        </Box>
-        
-        {/* Decorative graphics */}
-        <Box sx={{ 
-          position: "absolute", 
-          top: "-5%", 
-          right: "-2%", 
-          width: "60%", 
-          height: "120%", 
-          zIndex: 1,
-          display: { xs: "none", md: "block" }
-        }}>
-          <Box 
-            component="img" 
-            src="image.png" 
-            alt="Decorative graphic elements"
-            sx={{ 
-              width: "100%", 
-              height: "auto",
-              objectFit: "contain",
-              
-            }} 
-            />
-        </Box>
-      </Box>
-
+   <Box sx={{ 
+  padding: "1.5rem 2rem", 
+  backgroundColor: "#04273F",
+  position: "relative",
+  overflow: "hidden"
+}}>
+  {/* Breadcrumb navigation */}
+  <Typography sx={{ 
+    color: "white", 
+    fontSize: "1rem",
+    ml: { xs: 0, md: 15 }
+  }}>
+    <Box 
+      component={RouterLink} 
+      to="/"
+      sx={{ 
+        cursor: "pointer", 
+        color: "white", 
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "underline"
+        }
+      }}
+    >
+      Home
     </Box>
+    <Box component="span" sx={{ margin: "0 0.5rem" }}> &gt; </Box>
+    <Box component="span">Services</Box>
+  </Typography>
+  
+  {/* Main content */}
+  <Box sx={{ 
+    display: "flex", 
+    flexDirection: "column", 
+    position: "relative", 
+    padding: "0 2rem",
+    minHeight: { xs: "500px", md: "auto" },
+    
+  }}>
+    {/* Background image for mobile */}
+    <Box sx={{ 
+      position: "absolute",
+      top: 0,
+      right: -600,
+      bottom: 0,
+      left: 0,
+      zIndex: 1,
+     
+      opacity:{ xs: 0.2, md: "0" },
+      backgroundImage: "url(image.png)",
+     
+      backgroundPosition: "right center",
+      backgroundRepeat: "no-repeat",
+      display: { xs: "block", md: "none" }
+    }} />
+    
+    {/* Text content */}
+    <Box sx={{ 
+      width: { xs: "100%", md: "60%" }, 
+      zIndex: 2, 
+      position: "relative",
+      marginLeft: { xs: 0, md: "7rem" },
+      mt: { xs: "1rem", md: 0 }
+    }}>
+      <Typography sx={{ 
+        fontSize: { xs: "3rem", sm: "3rem", md: "4.5rem" }, 
+        fontWeight: "500", 
+        color: "white", 
+        marginBottom: "1.5rem",
+        fontFamily: "'Serif', serif"
+      }}>
+        Services
+      </Typography>
+      
+      <Typography sx={{ 
+        fontSize: { xs: "1.2rem", sm: "1.1rem", md: "2rem" }, 
+        lineHeight: 1.5, 
+        color: "#D9D9D9", 
+        marginBottom: "2rem",
+        maxWidth: { xs: "100%", md: "90%" }
+      }}>
+        Optimizing your Customer Experience Management (CXM) operations is key to provide great customer experiences. We offer a range of services to help you go beyond just implementing a Content Management System (CMS) and achieve real <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>business results.</Box>
+      </Typography>
+    </Box>
+    
+    {/* Decorative graphics for desktop */}
+    <Box sx={{ 
+      position: "absolute", 
+      top: "-5%", 
+      right: "-2%", 
+      width: "60%", 
+      height: "120%", 
+      zIndex: 1,
+      display: { xs: "none", md: "block" }
+    }}>
+      <Box 
+        component="img" 
+        src="image.png" 
+        alt="Decorative graphic elements"
+        sx={{ 
+          width: "100%", 
+          height: "auto",
+          objectFit: "contain",
+        }} 
+      />
+    </Box>
+  </Box>
+</Box>
+
+
+
 
 
     <Box sx={{ maxWidth: "100%", overflow: "hidden", backgroundColor:"white" }}>
@@ -124,6 +161,7 @@ export const Services = () => {
                     fontWeight: "400",
                     color: "#1A1A1A",
                     mb: 2,
+                    width:{ xs: "100%", md: "100%" },
                     fontFamily:"serif",
                     ml: { xs: 0, md: 3 }, // Add left margin on medium+ screens
                     textAlign: { xs: "left", md: "left" }, // Center on small, left on medium+
@@ -173,7 +211,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                       
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -185,7 +223,7 @@ export const Services = () => {
                         variant="h3"
                         sx={{
                             fontSize: { xs: "1.5rem", md: "1.7rem" }, // Adjusted font size for small
-                           
+                            width: { xs: "92%", md: "50%" }, // Full width on small
                             mb: 2,
                             color: "#252729",
                             transition: "color 0.3s ease",
@@ -202,6 +240,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                             paddingRight: { xs: 10, md: 0 }, 
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                         We help you evaluate your existing content processes and tooling, providing you with an improvement roadmap to drive your digital success.
@@ -215,6 +254,7 @@ export const Services = () => {
                             fontSize: "0.9rem",
                             color: "#333",
                             fontWeight: "500",
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                        <Button variant="contained" sx={{ backgroundColor:"#063251", borderRadius:6}} >
@@ -265,6 +305,7 @@ export const Services = () => {
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" }, // Stack text and image on small
                     bgcolor: "#D9E8F5",
+                    
                     borderRadius: 5,
                     "&:hover .project-image": {
                         transform: "scale(1.1)",
@@ -274,7 +315,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                       
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -286,7 +327,7 @@ export const Services = () => {
                         variant="h3"
                         sx={{
                             fontSize: { xs: "1.5rem", md: "1.5rem" }, // Adjusted font size for small
-                            
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                             mb: 2,
                             color: "#252729",
                             transition: "color 0.3s ease",
@@ -304,6 +345,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                               paddingRight: { xs: 10, md: 0 }, 
+                               width: { xs: "100%", md: "60%" }, // Full width on small
                         }}
                     >
                         In today’s fast-paced technology landscape, choosing the right tools can be challenging. We help you build a CXM ecosystem that fits your needs and strategy, without vendor bias.
@@ -372,6 +414,7 @@ export const Services = () => {
                     flexDirection: { xs: "column", md: "row" }, // Stack text and image on small
                     bgcolor: "#D9E8F5",
                     borderRadius: 5,
+                  
                     "&:hover .project-image": {
                         transform: "scale(1.1)",
                     },
@@ -380,7 +423,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                      
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -398,6 +441,7 @@ export const Services = () => {
                             transition: "color 0.3s ease",
                             cursor: "pointer",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                         Implement your Digital Experience Platform
@@ -410,6 +454,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                         We help you to architect and build your Digital Experience Platform (DXP), allowing your organization to manage engaging customer experiences at scale. We make sure your DXP aligns with your Content Supply Chain and seamlessly integrates with your customer touchpoints and enterprise services.
@@ -483,7 +528,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                       
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -501,6 +546,7 @@ export const Services = () => {
                             transition: "color 0.3s ease",
                             cursor: "pointer",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                         Keep your CXM ecosystem running smoothly
@@ -513,6 +559,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                        We provide full support and maintenance for your CXM platform, ensuring it operates smoothly and efficiently.
@@ -583,7 +630,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                        
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -597,6 +644,7 @@ export const Services = () => {
                             fontSize: { xs: "1.5rem", md: "1.5rem" }, // Adjusted font size for small
                            
                             mb: 2,
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                             color: "#252729",
                             transition: "color 0.3s ease",
                             cursor: "pointer",
@@ -613,6 +661,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "60%" }, // Full width on small
                         }}
                     >
                         A 3-stage approach to enhance the performance of your AEM-based DXP, improve its reliability, and prepare for future growth.
@@ -692,7 +741,7 @@ export const Services = () => {
 
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                   
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -704,7 +753,7 @@ export const Services = () => {
                         variant="h3"
                         sx={{
                             fontSize: { xs: "1.5rem", md: "1.7rem" }, // Adjusted font size for small
-                            
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                             mb: 2,
                             color: "#252729",
                             transition: "color 0.3s ease",
@@ -718,10 +767,11 @@ export const Services = () => {
                     <Typography
                         variant="body2"
                         sx={{
-                            fontSize: { xs: "0.9rem", md: "1.3rem" }, // Adjusted font size for small
+                            fontSize: { xs: "0.9rem", md: "1.2rem" }, // Adjusted font size for small
                             lineHeight: 1.6,
                             color: "#333",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "55%" }, // Full width on small
                         }}
                     >
                         Struggling with managing ever-growing volumes of content? AI advancements like Large Language Models (LLM's) as implemented by ChatGPT offer new ways to extract value from large amounts of content, but how can your organization prepare itself for these kind of use cases?
@@ -790,7 +840,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                       
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -802,7 +852,7 @@ export const Services = () => {
                         variant="h3"
                         sx={{
                             fontSize: { xs: "1.5rem", md: "1.8rem" }, // Adjusted font size for small
-                            
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                             mb: 2,
                             color: "#252729",
                             transition: "color 0.3s ease",
@@ -820,6 +870,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                        Don’t let change hold your organization back. We help your teams to adopt new workflows and technologies by applying tailored change management strategies, training, and support.
@@ -888,7 +939,7 @@ export const Services = () => {
             >
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "50%" }, // Full width on small
+                       
                         height: "100%",
                         p: 4,
                         zIndex: 1,
@@ -900,7 +951,7 @@ export const Services = () => {
                         variant="h3"
                         sx={{
                             fontSize: { xs: "1.5rem", md: "1.8rem" }, // Adjusted font size for small
-                            
+                             width: { xs: "100%", md: "50%" }, // Full width on small
                             mb: 2,
                             color: "#252729",
                             transition: "color 0.3s ease",
@@ -918,6 +969,7 @@ export const Services = () => {
                             lineHeight: 1.6,
                             color: "#333",
                              paddingRight: { xs: 10, md: 0 }, 
+                              width: { xs: "100%", md: "50%" }, // Full width on small
                         }}
                     >
                       We help you find and apply strategies to turn visitors into loyal customers, boosting your sales and conversions.
@@ -983,322 +1035,416 @@ export const Services = () => {
 
 
 
- <Box sx={{ 
-      backgroundColor: '#04273F',
-      padding: { xs: 3, md: 6 },
-    
-     
-     
-       position: 'relative', 
+
+
+
+
+<Box sx={{ 
+  backgroundColor: '#04273F',
+  padding: { xs: 3, md: 6 },
+  position: 'relative', 
   marginBottom: '1px' 
-    }}>
-      {/* Main Heading */}
-      <Typography variant="h1" sx={{
-        fontSize: '2rem',
-        fontWeight: 700,
-        color: 'white',
-        marginBottom: 4,
-        marginLeft: "100px"
-      }}>
-        How do we usually collaborate?
-      </Typography>
-
-      {/* Tabs Section */}
-      <Box sx={{ marginLeft: "100px", borderBottom: 1, borderColor: 'divider', }}>
-        <Tabs 
-          value={activeTab} 
-          onChange={handleTabChange}
-           sx={{
-    '& .MuiTabs-indicator': {
-      backgroundColor: '#E06826',
-      height: '1px',
-        bottom: '1px'
-    },
-    '& .MuiTab-root': {
+}}>
+  {/* Main Heading with Arrows for Small Screens */}
+  <Box sx={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: { xs: 'space-between', md: 'flex-start' },
+    marginBottom: 4,
+    marginLeft: { xs: 0, md: '100px' },
+  }}>
+    <Box sx={{
+      display: { xs: 'flex', md: 'none' },
       color: 'white',
-      '&.Mui-selected': {
-        color: '#E06826',
-      },
-      '&:hover': {
-        color: '#E06826',
-      }
-    }
-  }}
-
-        >
-          <Tab 
-            label="Consultancy & Advisory" 
-            value="consultancy"
-            sx={{
-              color: activeTab === 'consultancy' ? '#E06826' : 'white',
-                
-
-              fontWeight: 600,
-              fontSize: '1.25rem',
-              textTransform: 'none',
-              '&:hover': {
-                color: '#E06826',
-              },
-            }}
-          />
-          <Tab 
-            label="Project-Based" 
-            value="project"
-            sx={{
-              color: activeTab === 'project' ? '#E06826' : 'white',
-              fontWeight: 600,
-              fontSize: '1.25rem',
-              textTransform: 'none',
-              '&:hover': {
-                color: '#E06826',
-              },
-            }}
-          />
-          <Tab 
-            label="Managed Service" 
-            value="managed"
-            
-            sx={{
-              color: activeTab === 'managed' ? '#E06826' : 'white',
-              fontWeight: 600,
-              fontSize: '1.25rem',
-              textTransform: 'none',
-              '&:hover': {
-                color: '#E06826',
-              },
-            }}
-          />
-          <Tab 
-            label="Expert Staffing" 
-            value="staffing"
-            sx={{
-              color: activeTab === 'staffing' ? '#E06826' : 'white',
-              fontWeight: 600,
-              fontSize: '1.25rem',
-              textTransform: 'none',
-              '&:hover': {
-                color: '#E06826',
-              },
-            }}
-          />
-        </Tabs>
-      </Box>
-      
-      <Divider  sx={{ 
-  borderColor: 'white', 
-  marginTop: '-2px',
-  marginBottom: 4 ,
-   width: '77%',  
-    maxWidth: '1500px',
-    marginLeft: '100px',
-}} />
-
-      {/* Content Container with Image */}
-      <Box sx={{ display: 'flex', gap: 1 }}>
-        {/* Text Content */}
-        <Box sx={{ width: '60%', marginLeft: "100px" }}>
-          {activeTab === 'consultancy' && (
-            <>
-              <Typography variant="body1" sx={{
-                fontSize: '1.2rem',
-                lineHeight: 1.6,
-                color: 'white',
-                marginBottom: 4,
-                '& strong': {
-                  fontWeight: 600,
-                  color: 'white',
-                }
-              }}>
-                We can bring industry expertise and technical know-how to the table to provide you with actionable insights and strategic recommendations. Whether you're looking to optimize your current systems, implement new technologies, or develop a comprehensive CX strategy, we are able to provide technology-agnostic advice.
-              </Typography>
-
-              <Typography variant="h3" sx={{
-                fontSize: '1.25rem',
-                fontWeight: 600,
-                color: 'white',
-                marginBottom: 2,
-              }}>
-                Our expertise includes:
-              </Typography>
-
-              <Box component="ul" sx={{
-                paddingLeft: 3,
-                marginBottom: 4,
-                '& li': {
-                  marginBottom: 1,
-                  fontSize: '1.2rem',
-                  color: 'white',
-                }
-              }}>
-                <Box component="li">Strategy consulting</Box>
-                <Box component="li">Business analysis</Box>
-                <Box component="li">Information architecture</Box>
-                <Box component="li">Web Accessibility (L&AD certified)</Box>
-                <Box component="li">Search Engine Optimization (SEO)</Box>
-                <Box component="li">Change Management & User Adoption</Box>
-                <Box component="li">Enterprise architecture (composability, headless, ...)</Box>
-                <Box component="li">Cloud architecture</Box>
-              </Box>
-            </>
-          )}
-
-          {activeTab === 'project' && (
-            <>
-              <Typography variant="body1" sx={{
-                fontSize: '1.2rem',
-                lineHeight: 1.6,
-                color: 'white',
-                marginBottom: 4,
-                '& strong': {
-                  fontWeight: 600,
-                  color: 'white',
-                }
-              }}>
-                When you have a specific digital initiative defined, we work closely with you to understand your project requirements, timelines, and desired outcomes. From initial concept to final delivery, our team ensures that your project is delivered to the highest standards. Leveraging our FusionCX approach, we make sure to drive real business value.
-              </Typography>
-
-              <Typography variant="h3" sx={{
-                fontSize: '1.25rem',
-                fontWeight: 600,
-                color: 'white',
-                marginBottom: 2,
-              }}>
-                Our project teams integrate the following expertise:
-              </Typography>
-
-              <Box component="ul" sx={{
-                paddingLeft: 3,
-                marginBottom: 4,
-                '& li': {
-                  marginBottom: 1,
-                  fontSize: '1.2rem',
-                  color: 'white',
-                }
-              }}>
-                <Box component="li">Project & Program Management</Box>
-                <Box component="li">UX/UI design & design systems</Box>
-                <Box component="li">Front-end development (incl. frameworks like React or Astro)</Box>
-                <Box component="li">CMS development and integrations (both full-stack and headless)</Box>
-                <Box component="li">Web Performance</Box>
-                <Box component="li">Web Accessibility (IAAP certified)</Box>
-                <Box component="li">DevOps</Box>
-                <Box component="li">Change Management & User Adoption</Box>
-              </Box>
-            </>
-          )}
-
-          {activeTab === 'managed' && (
-            <>
-              <Typography variant="body1" sx={{
-                fontSize: '1.2rem',
-                lineHeight: 1.6,
-                color: 'white',
-                marginBottom: 4,
-                '& strong': {
-                  fontWeight: 600,
-                  color: 'white',
-                }
-              }}>
-                With the AmeXio Service Center, we provide a Managed Service designed to take the burden off your shoulders, allowing you to focus on your core business activities. We provide comprehensive governance and support for your systems, ensuring they run smoothly and efficiently at all times. Services include regular maintenance, updates, security monitoring, troubleshooting and proactive data-driven advisory. Of course, these services can be covered by a mutually agreed Service Level Agreement (SLA).
-              </Typography>
-
-              <Typography variant="h3" sx={{
-                fontSize: '1.25rem',
-                fontWeight: 600,
-                color: 'white',
-                marginBottom: 2,
-              }}>
-                Our services include:
-              </Typography>
-
-              <Box component="ul" sx={{
-                paddingLeft: 3,
-                marginBottom: 4,
-                '& li': {
-                  marginBottom: 1,
-                  fontSize: '1.2rem',
-                  color: 'white',
-                }
-              }}>
-                <Box component="li">Service Delivery Management</Box>
-                <Box component="li">Support Engineering (with expertise in specific technologies)</Box>
-                <Box component="li">Incident Management</Box>
-                <Box component="li">Patch Management</Box>
-                <Box component="li">Uptime Management (monitoring)</Box>
-                <Box component="li">Performance Management</Box>
-                <Box component="li">Release Management</Box>
-              </Box>
-            </>
-          )}
-
-          {activeTab === 'staffing' && (
-            <>
-              <Typography variant="body1" sx={{
-                fontSize: '1.2rem',
-                lineHeight: 1.6,
-                color: 'white',
-                marginBottom: 4,
-                '& strong': {
-                  fontWeight: 600,
-                  color: 'white',
-                }
-              }}>
-                If you already have a solution in place and you need to upscale your expertise, we can provide you with access to a pool of highly skilled professionals who can seamlessly integrate into your team. We can provide short-term support for a specific project but also long-term expertise to drive your digital initiatives.
-              </Typography>
-
-              <Typography variant="h3" sx={{
-                fontSize: '1.25rem',
-                fontWeight: 600,
-                color: 'white',
-                marginBottom: 2,
-              }}>
-                Some of the specialists we can provide:
-              </Typography>
-
-              <Box component="ul" sx={{
-                paddingLeft: 3,
-                marginBottom: 4,
-                '& li': {
-                  marginBottom: 1,
-                  fontSize: '1.2rem',
-                  color: 'white',
-                }
-              }}>
-                <Box component="li">Accessibility experts (IAAP certified)</Box>
-                <Box component="li">Scrum Masters & Product Owners</Box>
-                <Box component="li">Conversion Rate Optimization (CRO) experts</Box>
-                <Box component="li">Design System engineers</Box>
-                <Box component="li">Functional analysts</Box>
-                <Box component="li">Technical architects & experts (both front & back-end expertise)</Box>
-                <Box component="li">DevOps experts</Box>
-              </Box>
-            </>
-          )}
-        </Box>
-
-        {/* Image */}
-        <Box sx={{ 
-          width: '40%', 
-          display: 'flex', 
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingRight: '200px'
-        }}>
-          <Box
-            component="img"
-            src="https://cdn.sanity.io/images/sha60dij/production/d174dfcee98869c93c1170dc886224f21b9b28b2-1500x1125.jpg?rect=188,0,1125,1125&w=604&h=604"
-            alt="Collaboration"
-            sx={{
-              width: '100%',
-              maxWidth: '400px',
-              height: 'auto',
-              borderRadius: '8px',
-              objectFit: 'cover'
-            }}
-          />
-        </Box>
-      </Box>
+      cursor: 'pointer',
+    }} onClick={() => scrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}>
+      <ArrowBackIosIcon />
     </Box>
+    <Typography variant="h1" sx={{
+      fontSize: '2rem',
+      fontWeight: 700,
+      color: 'white',
+      textAlign: { xs: 'center', md: 'left' },
+    }}>
+      How do we usually collaborate?
+    </Typography>
+    <Box sx={{
+      display: { xs: 'flex', md: 'none' },
+      color: 'white',
+      cursor: 'pointer',
+    }} onClick={() => scrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}>
+      <ArrowForwardIosIcon />
+    </Box>
+  </Box>
+
+  {/* Tabs Section */}
+  <Box sx={{
+    marginLeft: { xs: 0, md: '100px' },
+    borderBottom: 1,
+    borderColor: 'divider',
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    width: '90%',
+  }}>
+    {/* Left Arrow for Small Screens */}
+    <Box sx={{
+      display: { xs: 'flex', md: 'none' },
+      color: 'white',
+      cursor: 'pointer',
+      padding: '0 8px',
+      zIndex: 1,
+    }} onClick={() => scrollRef.current?.scrollBy({ left: -200, behavior: 'smooth' })}>
+      <ArrowBackIosIcon />
+    </Box>
+
+    {/* Scrollable Tabs Container */}
+    <Box
+      ref={scrollRef}
+      sx={{
+        flex: 1,
+        overflowX: { xs: 'auto', md: 'visible' },
+        whiteSpace: { xs: 'nowrap', md: 'normal' },
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '-ms-overflow-style': 'none',
+        'scrollbar-width': 'none',
+        paddingBottom: '1px',
+      }}
+    >
+      <Tabs
+        value={activeTab}
+        onChange={(event, newValue) => setActiveTab(newValue)}
+        sx={{
+          '& .MuiTabs-indicator': {
+            backgroundColor: '#E06826',
+            height: '1px',
+            bottom: '1px',
+          },
+          '& .MuiTab-root': {
+            color: 'white',
+            '&.Mui-selected': {
+              color: '#E06826',
+            },
+            '&:hover': {
+              color: '#E06826',
+            },
+          },
+          '& .MuiTabs-flexContainer': {
+            display: { xs: 'inline-flex', md: 'flex' },
+            justifyContent: { xs: 'flex-start', md: 'flex-start' },
+          },
+          minWidth: 'max-content',
+        }}
+      >
+        <Tab 
+          label="Consultancy & Advisory" 
+          value="consultancy"
+          sx={{
+            color: activeTab === 'consultancy' ? '#E06826' : 'white',
+            fontWeight: 600,
+            fontSize: { xs: '1rem', md: '1.25rem' },
+            textTransform: 'none',
+            minWidth: 'auto',
+            padding: { xs: '6px 12px', md: '12px 16px' },
+            '&:hover': {
+              color: '#E06826',
+            },
+          }}
+        />
+        <Tab 
+          label="Project-Based" 
+          value="project"
+          sx={{
+            color: activeTab === 'project' ? '#E06826' : 'white',
+            fontWeight: 600,
+            fontSize: { xs: '1rem', md: '1.25rem' },
+            textTransform: 'none',
+            minWidth: 'auto',
+            padding: { xs: '6px 12px', md: '12px 16px' },
+            '&:hover': {
+              color: '#E06826',
+            },
+          }}
+        />
+        <Tab 
+          label="Managed Service" 
+          value="managed"
+          sx={{
+            color: activeTab === 'managed' ? '#E06826' : 'white',
+            fontWeight: 600,
+            fontSize: { xs: '1rem', md: '1.25rem' },
+            textTransform: 'none',
+            minWidth: 'auto',
+            padding: { xs: '6px 12px', md: '12px 16px' },
+            '&:hover': {
+              color: '#E06826',
+            },
+          }}
+        />
+        <Tab 
+          label="Expert Staffing" 
+          value="staffing"
+          sx={{
+            color: activeTab === 'staffing' ? '#E06826' : 'white',
+            fontWeight: 600,
+            fontSize: { xs: '1rem', md: '1.25rem' },
+            textTransform: 'none',
+            minWidth: 'auto',
+            padding: { xs: '6px 12px', md: '12px 16px' },
+            '&:hover': {
+              color: '#E06826',
+            },
+          }}
+        />
+      </Tabs>
+    </Box>
+
+    {/* Right Arrow for Small Screens */}
+    <Box sx={{
+      display: { xs: 'flex', md: 'none' },
+      color: 'white',
+      cursor: 'pointer',
+      padding: '0 8px',
+      zIndex: 1,
+    }} onClick={() => scrollRef.current?.scrollBy({ left: 200, behavior: 'smooth' })}>
+      <ArrowForwardIosIcon />
+    </Box>
+  </Box>
+  
+  <Divider sx={{ 
+    borderColor: 'white', 
+    marginTop: '-3px',
+    marginBottom: 4,
+    width: { xs: '100%', md: '77%' },  
+    maxWidth: { xs: '100%', md: '1500px' },
+    marginLeft: { xs: 0, md: '100px' },
+  }} />
+
+  {/* Content Container */}
+  <Box sx={{
+    display: { xs: 'block', md: 'flex' },
+    gap: 1,
+    flexDirection: { xs: 'column', md: 'row-reverse' }, // Reverse to put image on left
+  }}>
+    {/* Image - First on Small Screens, Left on Large Screens */}
+    <Box sx={{ 
+      width: { xs: '100%', md: '40%' },
+      display: 'flex', 
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingRight: { xs: 0, md: 0 }, // Remove right padding on md
+     
+      marginBottom: { xs: 4, md: 0 },
+       marginRight: { xs: 0, md: 30 }, 
+      order: { xs: 1, md: -1 }, // Ensure image is first on md
+    }}>
+      <Box
+        component="img"
+        src="https://cdn.sanity.io/images/sha60dij/production/d174dfcee98869c93c1170dc886224f21b9b28b2-1500x1125.jpg?rect=188,0,1125,1125&w=604&h=604"
+        alt="Collaboration"
+        sx={{
+          width: '100%',
+          maxWidth: { xs: '300px', md: '400px' },
+          height: 'auto',
+          borderRadius: '8px',
+          objectFit: 'cover',
+        }}
+      />
+    </Box>
+
+    {/* Text Content - Right on Large Screens */}
+    <Box sx={{
+      width: { xs: '100%', md: '60%' },
+      marginLeft: { xs: 0, md: 13 }, // Remove left margin on md
+      paddingRight: { xs: 0, md: '200px' }, // Add right padding on md
+      order: { xs: 2, md: 1 }, // Text after image on md
+    }}>
+      {activeTab === 'consultancy' && (
+        <>
+          <Typography variant="body1" sx={{
+            fontSize: { xs: '1rem', md: '1.2rem' },
+            lineHeight: 1.6,
+            color: 'white',
+            marginBottom: 4,
+            '& strong': {
+              fontWeight: 600,
+              color: 'white',
+            },
+          }}>
+            We can bring industry expertise and technical know-how to the table to provide you with actionable insights and strategic recommendations. Whether you're looking to optimize your current systems, implement new technologies, or develop a comprehensive CX strategy, we are able to provide technology-agnostic advice.
+          </Typography>
+
+          <Typography variant="h3" sx={{
+            fontSize: { xs: '1.1rem', md: '1.25rem' },
+            fontWeight: 600,
+            color: 'white',
+            marginBottom: 2,
+          }}>
+            Our expertise includes:
+          </Typography>
+
+          <Box component="ul" sx={{
+            paddingLeft: 3,
+            marginBottom: 4,
+            '& li': {
+              marginBottom: 1,
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              color: 'white',
+            },
+          }}>
+            <Box component="li">Strategy consulting</Box>
+            <Box component="li">Business analysis</Box>
+            <Box component="li">Information architecture</Box>
+            <Box component="li">Web Accessibility (L&AD certified)</Box>
+            <Box component="li">Search Engine Optimization (SEO)</Box>
+            <Box component="li">Change Management & User Adoption</Box>
+            <Box component="li">Enterprise architecture (composability, headless, ...)</Box>
+            <Box component="li">Cloud architecture</Box>
+          </Box>
+        </>
+      )}
+
+      {activeTab === 'project' && (
+        <>
+          <Typography variant="body1" sx={{
+            fontSize: { xs: '1rem', md: '1.2rem' },
+            lineHeight: 1.6,
+            color: 'white',
+            marginBottom: 4,
+            '& strong': {
+              fontWeight: 600,
+              color: 'white',
+            },
+          }}>
+            When you have a specific digital initiative defined, we work closely with you to understand your project requirements, timelines, and desired outcomes. From initial concept to final delivery, our team ensures that your project is delivered to the highest standards. Leveraging our FusionCX approach, we make sure to drive real business value.
+          </Typography>
+
+          <Typography variant="h3" sx={{
+            fontSize: { xs: '1.1rem', md: '1.25rem' },
+            fontWeight: 600,
+            color: 'white',
+            marginBottom: 2,
+          }}>
+            Our project teams integrate the following expertise:
+          </Typography>
+
+          <Box component="ul" sx={{
+            paddingLeft: 3,
+            marginBottom: 4,
+            '& li': {
+              marginBottom: 1,
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              color: 'white',
+            },
+          }}>
+            <Box component="li">Project & Program Management</Box>
+            <Box component="li">UX/UI design & design systems</Box>
+            <Box component="li">Front-end development (incl. frameworks like React or Astro)</Box>
+            <Box component="li">CMS development and integrations (both full-stack and headless)</Box>
+            <Box component="li">Web Performance</Box>
+            <Box component="li">Web Accessibility (IAAP certified)</Box>
+            <Box component="li">DevOps</Box>
+            <Box component="li">Change Management & User Adoption</Box>
+          </Box>
+        </>
+      )}
+
+      {activeTab === 'managed' && (
+        <>
+          <Typography variant="body1" sx={{
+            fontSize: { xs: '1rem', md: '1.2rem' },
+            lineHeight: 1.6,
+            color: 'white',
+            marginBottom: 4,
+            '& strong': {
+              fontWeight: 600,
+              color: 'white',
+            },
+          }}>
+            With the AmeXio Service Center, we provide a Managed Service designed to take the burden off your shoulders, allowing you to focus on your core business activities. We provide comprehensive governance and support for your systems, ensuring they run smoothly and efficiently at all times. Services include regular maintenance, updates, security monitoring, troubleshooting and proactive data-driven advisory. Of course, these services can be covered by a mutually agreed Service Level Agreement (SLA).
+          </Typography>
+
+          <Typography variant="h3" sx={{
+            fontSize: { xs: '1.1rem', md: '1.25rem' },
+            fontWeight: 600,
+            color: 'white',
+            marginBottom: 2,
+          }}>
+            Our services include:
+          </Typography>
+
+          <Box component="ul" sx={{
+            paddingLeft: 3,
+            marginBottom: 4,
+            '& li': {
+              marginBottom: 1,
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              color: 'white',
+            },
+          }}>
+            <Box component="li">Service Delivery Management</Box>
+            <Box component="li">Support Engineering (with expertise in specific technologies)</Box>
+            <Box component="li">Incident Management</Box>
+            <Box component="li">Patch Management</Box>
+            <Box component="li">Uptime Management (monitoring)</Box>
+            <Box component="li">Performance Management</Box>
+            <Box component="li">Release Management</Box>
+          </Box>
+        </>
+      )}
+
+      {activeTab === 'staffing' && (
+        <>
+          <Typography variant="body1" sx={{
+            fontSize: { xs: '1rem', md: '1.2rem' },
+            lineHeight: 1.6,
+            color: 'white',
+            marginBottom: 4,
+            '& strong': {
+              fontWeight: 600,
+              color: 'white',
+            },
+          }}>
+            If you already have a solution in place and you need to upscale your expertise, we can provide you with access to a pool of highly skilled professionals who can seamlessly integrate into your team. We can provide short-term support for a specific project but also long-term expertise to drive your digital initiatives.
+          </Typography>
+
+          <Typography variant="h3" sx={{
+            fontSize: { xs: '1.1rem', md: '1.25rem' },
+            fontWeight: 600,
+            color: 'white',
+            marginBottom: 2,
+          }}>
+            Some of the specialists we can provide:
+          </Typography>
+
+          <Box component="ul" sx={{
+            paddingLeft: 3,
+            marginBottom: 4,
+            '& li': {
+              marginBottom: 1,
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              color: 'white',
+            },
+          }}>
+            <Box component="li">Accessibility experts (IAAP certified)</Box>
+            <Box component="li">Scrum Masters & Product Owners</Box>
+            <Box component="li">Conversion Rate Optimization (CRO) experts</Box>
+            <Box component="li">Design System engineers</Box>
+            <Box component="li">Functional analysts</Box>
+            <Box component="li">Technical architects & experts (both front & back-end expertise)</Box>
+            <Box component="li">DevOps experts</Box>
+          </Box>
+        </>
+      )}
+    </Box>
+  </Box>
+</Box>
+    
+
+
+
 
 
 

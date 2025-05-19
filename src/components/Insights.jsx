@@ -9,94 +9,114 @@ export const Insights = () => {
    <>
    <Box sx={{ backgroundColor: "#04273F", height: "auto" }}>
      <Box sx={{ backgroundColor: "#04273F", width: "100%", minHeight: "100vh", position: "relative", overflow: "hidden" }}>
-           {/* Navigation breadcrumb */}
-           <Box sx={{ padding: "1.5rem 2rem" }}>
-            <Typography sx={{ color: "white", fontSize: "1rem", ml: 15 }}>
-          <Box 
-            component={RouterLink} 
-            to="/"
-            sx={{ 
-              cursor: "pointer", 
-              color: "white", 
-              textDecoration: "none",
-              "&:hover": {
-                textDecoration: "underline"
-              }
-            }}
-          >
-            Home
-          </Box>
-          <Box component="span" sx={{ margin: "0 0.5rem" }}> &gt; </Box>
-          <Box component="span">Services</Box>
-        </Typography>
-              </Box>
-           
-           {/* Main content */}
-           <Box sx={{ display: "flex", flexDirection: "column", position: "relative", padding: "0 2rem" }}>
-             {/* Text content */}
-             <Box sx={{ 
-                 width: { xs: "100%", md: "60%", }, 
-                 zIndex: 2, 
-                 position: "relative",
-                 marginLeft: { xs: 0, md: "7rem" }
-             }}>
-               <Typography sx={{ 
-                   fontSize: { xs: "3rem", md: "4.5rem" }, 
-                   fontWeight: "500", 
-                   color: "white", 
-                   marginBottom: "1.5rem",
-                   fontFamily: "'Serif', serif"
-               }}>
-                 Insights
-               </Typography>
-               
-               <Typography sx={{ 
-                 fontSize: { xs: "1.1rem", md: "2rem" }, 
-                 lineHeight: 1.5, 
-                 color: "#D9D9D9", 
-                 marginBottom: "2rem",
-                 maxWidth: "90%"
-               }}>
-                Our teams are  <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>passionate</Box> about solving challenges for our clients. Check out our posts to see how we approach problems, share our solutions, and offer practical insights from our work.
-               
-               </Typography>
-             </Box>
-             
-             {/* Decorative graphics */}
-             <Box sx={{ 
-               position: "absolute", 
-               top: "-5%", 
-               right: "-2%", 
-               width: "60%", 
-               height: "120%", 
-               zIndex: 1,
-               display: { xs: "none", md: "block" }
-             }}>
-               <Box 
-                 component="img" 
-                 src="image.png" 
-                 alt="Decorative graphic elements"
-                 sx={{ 
-                   width: "100%", 
-                   height: "auto",
-                   objectFit: "contain",
-                   
-                 }} 
-                 />
-             </Box>
-           </Box>
+        
+{/* Navigation breadcrumb */}
+<Box sx={{ padding: "1.5rem 2rem" }}>
+  <Typography sx={{ color: "white", fontSize: "1rem", ml: { xs: 0, md: 15 } }}>
+    <Box 
+      component={RouterLink} 
+      to="/"
+      sx={{ 
+        cursor: "pointer", 
+        color: "white", 
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "underline"
+        }
+      }}
+    >
+      Home
+    </Box>
+    <Box component="span" sx={{ margin: "0 0.5rem" }}>  </Box>
+    <Box component="span">Services</Box>
+  </Typography>
+</Box>
+
+{/* Main content */}
+<Box sx={{ 
+  display: "flex", 
+  flexDirection: "column", 
+  position: "relative", 
+  padding: { xs: "0 1rem", md: "0 2rem" },
+  backgroundImage: { xs: "url('image.png')", md: "none" }, // Background image on xs
+  backgroundSize: { xs: "cover", md: "auto" }, // Cover screen on xs
+  backgroundPosition: { xs: "center", md: "auto" }, // Center image on xs
+  backgroundRepeat: { xs: "no-repeat", md: "no-repeat" }, // Prevent tiling
+  minHeight: { xs: "100vh", md: "auto" }, // Ensure background covers height on xs
+}}>
+  {/* Text content */}
+  <Box sx={{ 
+    width: { xs: "100%", md: "60%" }, 
+    zIndex: 2, 
+    position: "relative",
+    marginLeft: { xs: 0, md: "7rem" },
+    padding: { xs: "1rem", md: 0 }, // Add padding for text on xs
+    background: { xs: "rgba(4, 39, 63, 0.7)", md: "none" }, // Semi-transparent overlay on xs
+    textAlign: { xs: "left", md: "left" }, // Explicitly left-align text on xs
+  }}>
+    <Typography sx={{ 
+      fontSize: { xs: "3rem", md: "4.5rem" }, 
+      fontWeight: "500", 
+      color: "white", 
+      marginBottom: "1.5rem",
+      fontFamily: "'Serif', serif"
+    }}>
+      Insights
+    </Typography>
+    
+    <Typography sx={{ 
+      fontSize: { xs: "1.1rem", md: "2rem" }, 
+      lineHeight: 1.5, 
+      color: "#D9D9D9", 
+      marginBottom: "2rem",
+      maxWidth: { xs: "75%", md: "90%" }, // Full width on xs
+    }}>
+      Our teams are  <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>passionate</Box> about solving challenges for our clients. Check out our posts to see how we approach problems, share our solutions, and offer practical insights from our work.
+    </Typography>
+  </Box>
+  
+  {/* Decorative graphics */}
+  <Box sx={{ 
+    position: "absolute", 
+    top: "-5%", 
+    right: "-2%", 
+    width: "60%", 
+    height: "120%", 
+    zIndex: 1,
+    display: { xs: "none", md: "block" } // Only visible on md and up
+  }}>
+    <Box 
+      component="img" 
+      src="image.png" 
+      alt="Decorative graphic elements"
+      sx={{ 
+        width: "100%", 
+        height: "auto",
+        objectFit: "contain",
+      }} 
+    />
+  </Box>
+</Box>
      
           
-          <Box
-    sx={{
+         
+
+         </Box>
+
+
+
+<Box
+    SX={{
         flex: 1,
         display: "flex",
         flexDirection: { xs: "column", md: "column" },
         gap: 3,
-        mt: 30,
-        width: "80%",
-        height: "100vh",
-        ml: 20
+        mt: 10,
+        width: { xs: "100%", md: "80%" }, // Full width on xs
+        height: { xs: "auto", md: "100vh" }, // Auto height on xs
+        ml: { xs: 0, md: 20 }, // Remove margin on xs
+        px: { xs: 2, md: 0 }, // Add padding on xs
+        
     }}
 >
     {/* Project 1 */}
@@ -104,12 +124,14 @@ export const Insights = () => {
         sx={{
             height: { xs: "auto", md: "400px" },
             overflow: "hidden",
-            width: "100%",
+            width: "90%",
             position: "relative",
             display: "flex",
-            flexDirection: { xs: "column", md: "row" },
+            flexDirection: { xs: "column", md: "row" }, // Column on xs, row on md
             backgroundColor: "#05314E",
             borderRadius: 3,
+            ml:{ xs: "14px", md: "100px" },
+            mb: 10,
             border: "1px solid rgba(21, 99, 122, 0.62)",
             boxShadow: "0 4px 8px rgba(81, 136, 213, 0.2)",
             "&:hover .project-image": {
@@ -123,9 +145,9 @@ export const Insights = () => {
         {/* Image with zoom effect */}
         <Box
             sx={{
-                position: { xs: "relative", md: "relative" },
-                width: { xs: "100%", md: "34%" },
-                height: { xs: "300px", md: "100%" },
+                position: "relative",
+                width: { xs: "100%", md: "60%" },
+                height: { xs: "250px", md: "100%" }, // Smaller height on xs
                 zIndex: 0,
                 display: "flex",
                 justifyContent: "flex-start",
@@ -150,18 +172,15 @@ export const Insights = () => {
         {/* Text content */}
         <Box
             sx={{
-                width: { xs: "100%", md: "50%" },
-                height: "100%",
-                p: 4,
+              
+                height: "auto", // Auto height on all screens
+                p: { xs: 3, md: 4 }, // Slightly less padding on xs
                 zIndex: 1,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                
             }}
         >
-            
-            
             <Typography
                 className="project-title"
                 variant="h3"
@@ -173,7 +192,8 @@ export const Insights = () => {
                     color: "white",
                     transition: "color 0.3s ease",
                     cursor: "pointer",
-                     ml:4,
+                      width: { xs: "100%", md: "50%" },
+                    ml: { xs: 0, md: 4 }, // Remove margin on xs
                 }}
             >
                 Making sense of Composability
@@ -185,8 +205,8 @@ export const Insights = () => {
                     fontSize: { xs: "0.9rem", md: "1.1rem" },
                     lineHeight: 1.6,
                     color: "white",
-                    mb: 10,
-                    ml:4,
+                    mb: 4, // Reduced margin for better spacing on xs
+                    ml: { xs: 0, md: 4 }, // Remove margin on xs
                     fontFamily: "serif",
                 }}
             >
@@ -199,24 +219,25 @@ export const Insights = () => {
                     fontSize: "1rem",
                     color: "white",
                     mb: 2,
-                     ml:4,
+                    ml: { xs: 0, md: 4 }, // Remove margin on xs
                 }}
             >
-                16 October 2024 <Box component={"span"} sx={{ color: "orange" }}>/</Box> Composibility
+                16 October 2024 <Box component={"span"} sx={{ color: "orange" }}>/</Box> Composability
             </Typography>
             
-            <Box sx={{ display: "flex", alignItems: "center",  ml:4, }}>
+            <Box sx={{ 
+                display: "flex", 
+                alignItems: "center", 
+                ml: { xs: 0, md: 4 }, // Remove margin on xs
+            }}>
                 <Avatar 
                     src="https://cdn.sanity.io/images/sha60dij/production/55b14150611394b8addc41476ce6047eafdf002b-200x200.jpg?w=120&h=120&fit=clip"
                     sx={{ 
                         width: 40, 
                         height: 40, 
-                    
                         mr: 2
                     }}
-                >
-                   
-                </Avatar>
+                />
                 <Box>
                     <Typography
                         variant="subtitle2"
@@ -244,7 +265,6 @@ export const Insights = () => {
 </Box>
 
 
-         </Box>
 
 
 
@@ -1537,7 +1557,8 @@ export const Insights = () => {
         p: 2,
         
         borderRadius: 1,
-        width: '100%'
+        
+          width: { xs: "90%", md: "100%" },
       }}
     >
       <Typography
@@ -1546,16 +1567,18 @@ export const Insights = () => {
           color: 'text.secondary',
           fontSize: '0.875rem',
           fontWeight: 400,
-          mb: 1 // Add margin bottom for spacing above divider
+          mb: 1, // Add margin bottom for spacing above divider
+           
         }}
       >
         You've viewed <strong>23</strong> of the <strong>23</strong> blogposts
       </Typography>
       <Divider 
         sx={{ 
-          width: '15%', 
+          width: '12%', 
           borderColor: '#EC6E28', // Orange color
           borderBottomWidth: 2, // Thicker line
+           
          
         }} 
       />
