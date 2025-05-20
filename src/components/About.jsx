@@ -8,122 +8,119 @@ export const About = () => {
   return (
     <>
       <Box sx={{ backgroundColor: "#04273F", height: "auto" }}>
-        <Box sx={{ padding: "1.5rem 2rem" }}>
-          <Typography sx={{ color: "white", fontSize: "1rem", ml: 15 }}>
-            <Box
-              component={RouterLink}
-              to="/"
-              sx={{
-                cursor: "pointer",
-                color: "white",
-                textDecoration: "none",
-                "&:hover": {
-                  textDecoration: "underline",
-                },
-              }}
-            >
-              Home
-            </Box>
-            <Box component="span" sx={{ margin: "0 0.5rem" }}>
-              {" "}
-              &gt;{" "}
-            </Box>
-            <Box component="span">About Us</Box>
-          </Typography>
-        </Box>
+         <Box sx={{ 
+                  padding: "1.5rem 2rem", 
+                  backgroundColor: "#04273F",
+                  position: "relative",
+                  overflow: "hidden"
+                }}>
+                  {/* Breadcrumb navigation */}
+                  <Typography sx={{ 
+                    color: "white", 
+                    fontSize: "1rem",
+                    ml: { xs: 0, md: 15 }
+                  }}>
+                    <Box 
+                      component={RouterLink} 
+                      to="/"
+                      sx={{ 
+                        cursor: "pointer", 
+                        color: "white", 
+                        textDecoration: "none",
+                        "&:hover": {
+                          textDecoration: "underline"
+                        }
+                      }}
+                    >
+                      Home
+                    </Box>
+                    <Box component="span" sx={{ margin: "0 0.5rem" }}> &gt; </Box>
+                    <Box component="span">About Us</Box>
+                  </Typography>
+                  
+                  {/* Main content */}
+                  <Box sx={{ 
+                    display: "flex", 
+                    flexDirection: "column", 
+                    position: "relative", 
+                    padding: "0 2rem",
+                    minHeight: { xs: "500px", md: "auto" },
+                    
+                  }}>
+                    {/* Background image for mobile */}
+                    <Box sx={{ 
+                      position: "absolute",
+                      top: 0,
+                      right: -600,
+                      bottom: 0,
+                      left: 0,
+                      zIndex: 1,
+                     
+                      opacity:{ xs: 0.2, md: "0" },
+                      backgroundImage: "url(image.png)",
+                     
+                      backgroundPosition: "right center",
+                      backgroundRepeat: "no-repeat",
+                      display: { xs: "block", md: "none" }
+                    }} />
+                    
+                    {/* Text content */}
+                    <Box sx={{ 
+                      width: { xs: "100%", md: "60%" }, 
+                      zIndex: 2, 
+                      position: "relative",
+                      marginLeft: { xs: 0, md: "7rem" },
+                      mt: { xs: "1rem", md: 0 }
+                    }}>
+                      <Typography sx={{ 
+                        fontSize: { xs: "3rem", sm: "3rem", md: "4.5rem" }, 
+                        fontWeight: "500", 
+                        color: "white", 
+                        marginBottom: "1.5rem",
+                        fontFamily: "'Serif', serif"
+                      }}>
+                        About Us
+                      </Typography>
+                      
+                      <Typography sx={{ 
+                        fontSize: { xs: "1rem", sm: "1.1rem", md: "1.5rem" }, 
+                        lineHeight: 1.5, 
+                        color: "#D9D9D9", 
+                        marginBottom: "2rem",
+                        maxWidth: { xs: "100%", md: "90%" }
+                      }}>
+                      AmeXio Fuse is the <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>Customer Experience (CX)</Box>
+                        division of AmeXio Group, helping organizations streamline their <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}> content operations</Box> and optimize their digital experiences. We strongly believe in cross-discipline collaboration as a key ingredient for successful digital projects. We essentially <Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}>fuse</Box>  our teams with your organization, providing you with highly valuable advice for developing and refining your experience management operations.
+                      </Typography>
+                    </Box>
+                    
+                    {/* Decorative graphics for desktop */}
+                    <Box sx={{ 
+                      position: "absolute", 
+                      top: "-10%", 
+                      right: "-2%", 
+                      width: "55%", 
+                      height: "120%", 
+                      zIndex: 1,
+                      display: { xs: "none", md: "block" }
+                    }}>
+                      <Box 
+                        component="img" 
+                        src="image.png" 
+                        alt="Decorative graphic elements"
+                        sx={{ 
+                          width: "100%", 
+                          height: "auto",
+                          objectFit: "contain",
+                        }} 
+                      />
+                    </Box>
+                  </Box>
+                </Box>
 
-        {/* Main content */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            position: "relative",
-            padding: "0 2rem",
-          }}
-        >
-          {/* Text content */}
-          <Box
-            sx={{
-              width: { xs: "100%", md: "60%" },
-              zIndex: 2,
-              position: "relative",
-              marginLeft: { xs: 0, md: "7rem" },
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: { xs: "3rem", md: "4.5rem" },
-                fontWeight: "500",
-                color: "white",
-                marginBottom: "1.5rem",
-                fontFamily: "'Serif', serif",
-              }}
-            >
-              About Us
-            </Typography>
 
-            <Typography
-              sx={{
-                fontSize: { xs: "1.1rem", md: "1.7rem" },
-                lineHeight: 1.5,
-                color: "#D9D9D9",
-                marginBottom: "2rem",
-                maxWidth: "90%",
-              }}
-            >
-              AmeXio Fuse is the{" "}
-              <Box
-                component="span"
-                sx={{ color: "#F9A826", fontWeight: "bold" }}
-              >
-                Customer Experience (CX)
-              </Box>{" "}
-              division of AmeXio Group, helping organizations streamline their{" "}
-              <Box
-                component="span"
-                sx={{ color: "#F9A826", fontWeight: "bold" }}
-              >
-                content operations
-              </Box>{" "}
-              and optimize their digital experiences. We strongly believe in
-              cross-discipline collaboration as a key ingredient for successful
-              digital projects. We essentially{" "}
-              <Box
-                component="span"
-                sx={{ color: "#F9A826", fontWeight: "bold" }}
-              >
-                fuse
-              </Box>{" "}
-              our teams with your organization, providing you with highly
-              valuable advice for developing and refining your experience
-              management operations.
-            </Typography>
-          </Box>
 
-          {/* Decorative graphics */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: -50,
-              right: "0%",
-              width: "60%",
-              height: "120%",
-              zIndex: 1,
-              display: { xs: "none", md: "block" },
-            }}
-          >
-            <Box
-              component="img"
-              src="image.png"
-              alt="Decorative graphic elements"
-              sx={{
-                width: "100%",
-                height: "auto",
-                objectFit: "contain",
-              }}
-            />
-          </Box>
-        </Box>
+
 
         <Box sx={{ marginTop: 4 }}>
           <Box
@@ -248,99 +245,101 @@ export const About = () => {
         </Box>
 
 
-  <Box sx={{
-  display: "flex",
-  justifyContent: "center",
-  marginTop: 4,
-  padding: 3,
-  
-  position: 'relative',
-  bgcolor: '#002340',
-  overflow: 'hidden',
-  py: 4,
-}}>
-  <Box sx={{
-    position: 'relative',
-    width: '100%',
-    maxWidth: '1200px',
-    height: '420px',
-  }}>
-    <img 
-      src="https://cdn.sanity.io/images/sha60dij/production/da559f7f5d6e7048e9e6e1b238bc586e997aa5c3-3840x2160.webp?rect=0,408,3840,1344&w=1200&h=420&fit=clip" 
-      alt="" 
-      style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-      }}
-    />
-    
-    <Box
+ <Box
       sx={{
-        position: 'absolute',
-        left: { xs: 0, md: '-14%' }, // 5% from left on desktop, 0 on mobile
-        top: '50%',
-        transform: 'translateY(-50%)',
-        bgcolor: ' #FFC256',
-        p: { xs: 3, md: 4 },
-        width: { xs: '100%', md: '60%' },
-        zIndex: 2,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        display: "flex",
+        justifyContent: "center",
+        marginTop: 4,
+        padding: 3,
+        ml:{ xs: '0', md: '100px' },
+         mr:{ xs: '0', md: '100px' },
+        position: 'relative',
+        bgcolor: '#002340',
+        
+        py: { xs: 3, md: 4 },
+        backgroundImage: 'url("https://cdn.sanity.io/images/sha60dij/production/da559f7f5d6e7048e9e6e1b238bc586e997aa5c3-3840x2160.webp?rect=0,408,3840,1344&w=1200&h=420&fit=clip")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: { xs: '300px', md: '420px' },
       }}
     >
-      <Typography
-        variant="h4"
+      <Box
         sx={{
-          fontWeight: 'bold',
-          mb: 2,
-          color: '#000',
-          fontSize: { xs: '1.5rem', md: '2rem' },
-          ml:23,
-          fontfamily:"serif"
+          position: 'relative',
+          width: '100%',
+          maxWidth: '1200px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: { xs: 'center', md: 'flex-start' },
         }}
       >
-        Trusted by leading brands and government agencies
-      </Typography>
-      
-      <Typography
-        sx={{
-          mb: 3,
-          color: '#000',
-          fontSize: { xs: '0.9rem', md: '1rem' },
-          lineHeight: 1.6,
-           ml:23
-        }}
-      >
-        We partner with top global brands and key government departments. Explore our portfolio to learn more about our successful collaborations.
-      </Typography>
-      
-      <Box>
-        <Button
-          variant="contained"
+        <Box
           sx={{
-            bgcolor: '#063251',
-            color: 'white',
-            borderRadius: 28,
-            px: 3,
-            py: 1,
-            textTransform: 'none',
-             ml:23,
-            fontSize: '0.9rem',
-            '&:hover': {
-              bgcolor: '#001830',
-            },
-            minWidth: '120px',
+            bgcolor: '#FFC256',
+            p: { xs: 2, md: 4 },
+            width: { xs: '90%', md: '60%' },
+            maxWidth: { xs: '100%', md: 'unset' },
+            marginLeft: { xs: '-10%', md: '-20%' },
+            marginRight: { xs: 'auto', md: 0 },
+            zIndex: 2,
+             
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            textAlign: { xs: 'left', md: 'left' },
           }}
         >
-          Our work
-        </Button>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 'bold',
+              mb: 2,
+              color: '#000',
+              fontSize: { xs: '1.5rem', md: '2rem' },
+              ml: { xs: 0, md: 23 },
+              fontFamily: 'serif',
+            }}
+          >
+            Trusted by leading brands and government agencies
+          </Typography>
+
+          <Typography
+            sx={{
+              mb: 3,
+              color: '#000',
+              fontSize: { xs: '0.9rem', md: '1rem' },
+              lineHeight: 1.6,
+              ml: { xs: 0, md: 23 },
+            }}
+          >
+            We partner with top global brands and key government departments. Explore our portfolio to learn more about our successful collaborations.
+          </Typography>
+
+          <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' }, ml: { xs: 0, md: 23 } }}>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: '#063251',
+                color: 'white',
+                borderRadius: 28,
+                px: 3,
+                py: 1,
+                textTransform: 'none',
+                fontSize: '0.9rem',
+                '&:hover': {
+                  bgcolor: '#001830',
+                },
+                minWidth: '120px',
+              }}
+            >
+              Our work
+            </Button>
+          </Box>
+        </Box>
       </Box>
     </Box>
-  </Box>
-</Box>
-
+ 
 
 
 

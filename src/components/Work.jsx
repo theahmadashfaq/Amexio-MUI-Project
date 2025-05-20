@@ -7,106 +7,119 @@ export const Work = () => {
   return (
     <>
       <Box sx={{ backgroundColor: "#04273F", height: "auto" }}>
-        <Box sx={{ padding: "1.5rem 2rem" }}>
-          <Typography sx={{ color: "white", fontSize: "1rem", ml: 15 }}>
-            <Box
-              component={RouterLink}
+         <Box sx={{ 
+          padding: "1.5rem 2rem", 
+          backgroundColor: "#04273F",
+          position: "relative",
+          overflow: "hidden"
+        }}>
+          {/* Breadcrumb navigation */}
+          <Typography sx={{ 
+            color: "white", 
+            fontSize: "1rem",
+            ml: { xs: 0, md: 15 }
+          }}>
+            <Box 
+              component={RouterLink} 
               to="/"
-              sx={{
-                cursor: "pointer",
-                color: "white",
+              sx={{ 
+                cursor: "pointer", 
+                color: "white", 
                 textDecoration: "none",
                 "&:hover": {
-                  textDecoration: "underline",
-                },
+                  textDecoration: "underline"
+                }
               }}
             >
               Home
             </Box>
-            <Box component="span" sx={{ margin: "0 0.5rem" }}>
-              {" "}
-              &gt;{" "}
-            </Box>
+            <Box component="span" sx={{ margin: "0 0.5rem" }}> &gt; </Box>
             <Box component="span">Our Work</Box>
           </Typography>
-        </Box>
-
-        {/* Main content */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            position: "relative",
+          
+          {/* Main content */}
+          <Box sx={{ 
+            display: "flex", 
+            flexDirection: "column", 
+            position: "relative", 
             padding: "0 2rem",
-          }}
-        >
-          {/* Text content */}
-          <Box
-            sx={{
-              width: { xs: "100%", md: "60%" },
-              zIndex: 2,
+            minHeight: { xs: "500px", md: "auto" },
+            
+          }}>
+            {/* Background image for mobile */}
+            <Box sx={{ 
+              position: "absolute",
+              top: 0,
+              right: -600,
+              bottom: 0,
+              left: 0,
+              zIndex: 1,
+             
+              opacity:{ xs: 0.2, md: "0" },
+              backgroundImage: "url(image.png)",
+             
+              backgroundPosition: "right center",
+              backgroundRepeat: "no-repeat",
+              display: { xs: "block", md: "none" }
+            }} />
+            
+            {/* Text content */}
+            <Box sx={{ 
+              width: { xs: "100%", md: "60%" }, 
+              zIndex: 2, 
               position: "relative",
               marginLeft: { xs: 0, md: "7rem" },
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: { xs: "3rem", md: "4.5rem" },
-                fontWeight: "500",
-                color: "white",
+              mt: { xs: "1rem", md: 0 }
+            }}>
+              <Typography sx={{ 
+                fontSize: { xs: "3rem", sm: "3rem", md: "4.5rem" }, 
+                fontWeight: "500", 
+                color: "white", 
                 marginBottom: "1.5rem",
-                fontFamily: "'Serif', serif",
-              }}
-            >
-              Our Work
-            </Typography>
-
-            <Typography
-              sx={{
-                fontSize: { xs: "1.1rem", md: "2rem" },
-                lineHeight: 1.5,
-                color: "#D9D9D9",
+                fontFamily: "'Serif', serif"
+              }}>
+                Our Work
+              </Typography>
+              
+              <Typography sx={{ 
+                fontSize: { xs: "1.2rem", sm: "1.1rem", md: "2rem" }, 
+                lineHeight: 1.5, 
+                color: "#D9D9D9", 
                 marginBottom: "2rem",
-                maxWidth: "90%",
-              }}
-            >
-              For over 20 years, we have been{" "}
-              <Box
-                component="span"
-                sx={{ color: "#F9A826", fontWeight: "bold" }}
-              >
-                partnering
-              </Box>{" "}
-              with our ambitious clients, turning their content into value
-              through highly scalable content platforms.
-            </Typography>
-          </Box>
-
-          {/* Decorative graphics */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: -50,
-              right: "0%",
-              width: "60%",
-              height: "120%",
+                maxWidth: { xs: "100%", md: "90%" }
+              }}>
+               For over 20 years, we have been<Box component="span" sx={{ color: "#F9A826", fontWeight: "bold" }}> partnering</Box>
+                with our ambitious clients, turning their content into value through highly scalable content platforms.
+              </Typography>
+            </Box>
+            
+            {/* Decorative graphics for desktop */}
+            <Box sx={{ 
+              position: "absolute", 
+              top: "-20%", 
+              right: "-2%", 
+              width: "50%", 
+              height: "120%", 
               zIndex: 1,
-              display: { xs: "none", md: "block" },
-            }}
-          >
-            <Box
-              component="img"
-              src="image.png"
-              alt="Decorative graphic elements"
-              sx={{
-                width: "100%",
-                height: "auto",
-                objectFit: "contain",
-              }}
-            />
+              display: { xs: "none", md: "block" }
+            }}>
+              <Box 
+                component="img" 
+                src="image.png" 
+                alt="Decorative graphic elements"
+                sx={{ 
+                  width: "100%", 
+                  height: "auto",
+                  objectFit: "contain",
+                }} 
+              />
+            </Box>
           </Box>
         </Box>
-      
+
+
+
+
 <Box
       sx={{
         display: "flex",
